@@ -9,13 +9,14 @@ namespace Functional{
 
 
 
+
+
+
+
 void print_num(int i)
 {
 	std::cout << i << '\n';
 }
-
-
-
 
 void main()
 {

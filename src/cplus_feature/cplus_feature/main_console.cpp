@@ -15,6 +15,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	Delegate::test_main();
 	Functional::main();
 
+	Delegate::DeleManager::main();
+
 	system("pause");
 	return 0;
 }
