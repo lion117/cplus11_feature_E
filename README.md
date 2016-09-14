@@ -25,12 +25,10 @@ prproject  is to introduce C++ 11 new feature which could promote development ef
 - 存储结构体方法
 
 
-```
-
+```C++
 #pragma once
 #include <functional>
 #include <iostream>
-
 
 void print_num(int i);
 
@@ -97,8 +95,7 @@ inline void main()
 # 委托机制实现演示
 
 
-```
-
+```C++
 class IObj
 {
 public:
