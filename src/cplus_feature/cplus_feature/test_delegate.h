@@ -71,8 +71,6 @@ public:
 		}
 	}
 
-
-
 private:
 	vector <function<int(string)>> _dele_list;
 
@@ -102,9 +100,6 @@ public:
 
 
 
-
-string  echo_delegate(string t_data);
-void test_main();
 
 
 
