@@ -175,6 +175,6 @@ void Clambda_thread_guiDlg::OnBnClickedOk()
 	std::thread  i_thread(func);
 	i_thread.detach();
 
-	Sleep(1000);
-	CDialogEx::OnOK();
+	//Sleep(1000);
+	//CDialogEx::OnOK();
 }
