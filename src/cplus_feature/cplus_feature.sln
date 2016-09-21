@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cplus_feature", "cplus_feat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lambda_thread_gui", "lambda_thread_gui\lambda_thread_gui.vcxproj", "{DC7ED849-38E3-49CB-8BA0-4FD5653E9055}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_promise", "test_promise\test_promise.vcxproj", "{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -29,6 +31,12 @@ Global
 		{DC7ED849-38E3-49CB-8BA0-4FD5653E9055}.Release|x64.Build.0 = Release|x64
 		{DC7ED849-38E3-49CB-8BA0-4FD5653E9055}.Release|x86.ActiveCfg = Release|Win32
 		{DC7ED849-38E3-49CB-8BA0-4FD5653E9055}.Release|x86.Build.0 = Release|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Debug|x64.ActiveCfg = Debug|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Debug|x86.ActiveCfg = Debug|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Debug|x86.Build.0 = Debug|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Release|x64.ActiveCfg = Release|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Release|x86.ActiveCfg = Release|Win32
+		{A318D0DB-33E6-48DC-B09C-03CCE1DC5240}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
