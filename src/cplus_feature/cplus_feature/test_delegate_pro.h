@@ -12,14 +12,22 @@ using namespace std;
 class Worker
 {
 public:
-	Worker(string t_worker) { _work_name = t_worker;  cout << t_worker << "report" << endl; }
-	~Worker() {}
-	void regOnProcess(function<void(string, int)> t_func) 
-	{ 
-		_dele_on_process = t_func; 
-		cout << "accept task" << endl;;
+	Worker(string t_worker) 
+	{
+		_work_name = t_worker;  
+		cout << t_worker << " create " << endl; 
 	}
-	void regOnComplete(function<void(string, string)> t_func) { _dele_on_complete = t_func; }
+	~Worker() {}
+	void regOnProcess(function<void(const string&, const  int& )> t_func) 
+	{ 
+		cout << _work_name << "  accept regOnProcess from boss " << endl;
+		_dele_on_process = t_func; 
+	}
+	void regOnComplete(function<void(const string& , const string&)> t_func) 
+	{ 
+		cout << _work_name << "  accept regOnComplete from boss " << endl;
+		_dele_on_complete = t_func; 
+	}
 	
 
 	void startAsynicWork()
@@ -37,7 +45,7 @@ public:
 			}
 			if (!_dele_on_complete._Empty())
 			{
-				string i_result = _work_name + " had complete task ";
+				string i_result = "  Mission had been completed by : "+ _work_name;
 				_dele_on_complete(_work_name, i_result);
 			}	
 		};
@@ -45,8 +53,8 @@ public:
 		i_thread.detach();			
 	}
 private:
-	function<void(string, int)> _dele_on_process;
-	function<void(string, string)>	  _dele_on_complete;
+	function<void(const string & , const int&)>		  _dele_on_process;
+	function<void(const string &, const string&)>	  _dele_on_complete;
 	string _work_name;
 };
 
@@ -55,10 +63,10 @@ class Boss
 public:
 	Boss() {}
 	void onProcess(string t_worker, int t_percent) {
-		cout << "report to boss: " << t_worker << "   " << t_percent << endl;
+		cout << t_worker << "report to boss: " << "   " << t_percent << endl;
 	}
 	void onComplete(string  t_worker, string t_result) {
-		cout << "report to boss: " << t_worker << t_result << endl;
+		cout << t_worker << "report to boss: " << t_result << endl;
 	}
 	void hireWorker() {
 		Worker i_worker1("tom");
@@ -70,11 +78,11 @@ public:
 	{
 		for (auto & itor : _worker_list)
 		{
-			using std::placeholders::_1;
-			using std::placeholders::_2;
-			auto i_process_task = std::bind(&Boss::onProcess, this, _1, _2);
+			auto i_process_task = [&](const string&  t_name, const int&  t_percent) {
+				return onProcess(t_name, t_percent); 
+			};
 			itor.regOnProcess(i_process_task);
-			auto i_result_task = std::bind(&Boss::onComplete, this, _1, _2);
+			auto i_result_task = [&](const string&  t_name, const string& t_result) {return onComplete(t_name, t_result); };
 			itor.regOnComplete(i_result_task);
 		}
 	}
@@ -83,8 +91,6 @@ public:
 		{
 			itor.startAsynicWork();/////start work
 		}
-		cout << "software would crash once jump out loop" << endl;
-		system("pause");
 	}
 private:
 	vector<Worker> _worker_list;
@@ -95,6 +101,7 @@ public:
 	{
 		Boss i_boss;
 		i_boss.hireWorker();
+		i_boss.assignTask();
 		i_boss.makeMoney();
 		system("pause");
 	}
