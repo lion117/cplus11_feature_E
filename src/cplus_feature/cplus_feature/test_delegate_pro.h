@@ -62,10 +62,10 @@ class Boss
 {
 public:
 	Boss() {}
-	void onProcess(string t_worker, int t_percent) {
+	void onProcess(const string & t_worker, const int &  t_percent) {
 		cout << t_worker << "report to boss: " << "   " << t_percent << endl;
 	}
-	void onComplete(string  t_worker, string t_result) {
+	void onComplete(const string & t_worker, const string & t_result) {
 		cout << t_worker << "report to boss: " << t_result << endl;
 	}
 	void hireWorker() {
@@ -78,11 +78,11 @@ public:
 	{
 		for (auto & itor : _worker_list)
 		{
-			auto i_process_task = [&](const string&  t_name, const int&  t_percent) {
-				return onProcess(t_name, t_percent); 
-			};
+			using std::placeholders::_1;
+			using std::placeholders::_2;
+			auto i_process_task = std::bind(&Boss::onProcess,this,_1,_2 );
 			itor.regOnProcess(i_process_task);
-			auto i_result_task = [&](const string&  t_name, const string& t_result) {return onComplete(t_name, t_result); };
+			auto i_result_task = std::bind(&Boss::onComplete, this, _1, _2);
 			itor.regOnComplete(i_result_task);
 		}
 	}
