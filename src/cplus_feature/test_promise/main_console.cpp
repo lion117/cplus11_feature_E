@@ -19,9 +19,7 @@ int main()
 	// i_tuple->get();
 
 
-
-
-	test_task();
+	testMain();
 	system("pause");
 	return 0;
 }
