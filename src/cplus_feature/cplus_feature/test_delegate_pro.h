@@ -13,13 +13,14 @@ class Worker
 {
 public:
 	Worker(string t_worker) { _work_name = t_worker;  cout << t_worker << "report" << endl; }
+	~Worker() {}
 	void regOnProcess(function<void(string, int)> t_func) 
 	{ 
 		_dele_on_process = t_func; 
 		cout << "accept task" << endl;;
 	}
 	void regOnComplete(function<void(string, string)> t_func) { _dele_on_complete = t_func; }
-	~Worker(){}
+	
 
 	void startAsynicWork()
 	{
@@ -49,14 +50,6 @@ private:
 	string _work_name;
 };
 
-
-class WhiteWorker : public Worker
-{
-
-public:
-	WhiteWorker(string t_name) :Worker(t_name) { }
-};
-
 class Boss
 {
 public:
@@ -75,16 +68,6 @@ public:
 	}
 	//void assignTask()
 	//{
-	//	//for (auto itor : _worker_list)
-	//	//{
-	//	//	using std::placeholders::_1;
-	//	//	using std::placeholders::_2;
-	//	//	function<void(string, int)> i_process_task = std::bind(&Boss::onProcess, *this, _1, _2);
-	//	//	itor.regOnProcess(i_process_task);
-	//	//	function<void(string, string)> i_result_task = std::bind(&Boss::onComplete, *this, _1, _2);
-	//	//	itor.regOnComplete(i_result_task);
-	//	//	//itor.startAsynicWork();
-	//	//}
 	//}
 	void makeMoney() {
 		for (auto itor : _worker_list)
@@ -104,8 +87,6 @@ public:
 	}
 private:
 	vector<Worker> _worker_list;
-}
-
 
 #pragma region MAIN
 public:
@@ -117,7 +98,6 @@ public:
 		system("pause");
 	}
 #pragma endregion MAIN
-
 
 };
 
