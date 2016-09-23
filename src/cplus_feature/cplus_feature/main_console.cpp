@@ -8,7 +8,7 @@ using namespace std;
 
 #include "test_delegate.h"
 #include "test_functional.h"
-#include "delegate_demo.h"
+#include "test_delegate_pro.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {

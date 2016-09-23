@@ -8,6 +8,12 @@
     <Filter Include="unit test">
       <UniqueIdentifier>{cd79f1bd-f609-40b3-a01a-5cb5daa175d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="functional">
+      <UniqueIdentifier>{c9be053d-18e8-41c8-ad91-52a0ddc1c4b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="delegate">
+      <UniqueIdentifier>{9cca89fe-4210-4a98-854a-6c279427dc76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">
@@ -25,9 +31,15 @@
     <ClInclude Include="stdafx.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="test_delegate.h" />
-    <ClInclude Include="test_functional.h" />
-    <ClInclude Include="delegate_demo.h" />
+    <ClInclude Include="test_functional.h">
+      <Filter>functional</Filter>
+    </ClInclude>
+    <ClInclude Include="test_delegate_pro.h">
+      <Filter>delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="test_delegate.h">
+      <Filter>delegate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -37,8 +49,14 @@
       <Filter>unit test</Filter>
     </ClCompile>
     <ClCompile Include="main_console.cpp" />
-    <ClCompile Include="test_delegate.cpp" />
-    <ClCompile Include="test_functional.cpp" />
-    <ClCompile Include="delegate_demo.cpp" />
+    <ClCompile Include="test_functional.cpp">
+      <Filter>functional</Filter>
+    </ClCompile>
+    <ClCompile Include="test_delegate_pro.cpp">
+      <Filter>delegate</Filter>
+    </ClCompile>
+    <ClCompile Include="test_delegate.cpp">
+      <Filter>delegate</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
