@@ -66,21 +66,22 @@ public:
 		_worker_list.push_back(i_worker1);
 		_worker_list.push_back(i_worker2);
 	}
-	//void assignTask()
-	//{
-	//}
-	void makeMoney() {
-		for (auto itor : _worker_list)
+	void assignTask()
+	{
+		for (auto & itor : _worker_list)
 		{
 			using std::placeholders::_1;
 			using std::placeholders::_2;
-			auto i_process_task = std::bind(std::move(&Boss::onProcess), std::move(*this), _1, _2);
+			auto i_process_task = std::bind(&Boss::onProcess, this, _1, _2);
 			itor.regOnProcess(i_process_task);
-			auto i_result_task = std::bind(std::move(&Boss::onComplete), std::move(*this), _1, _2);
+			auto i_result_task = std::bind(&Boss::onComplete, this, _1, _2);
 			itor.regOnComplete(i_result_task);
-			/////start work
-			itor.startAsynicWork();
-			system("pause");
+		}
+	}
+	void makeMoney() {
+		for (auto & itor : _worker_list)
+		{
+			itor.startAsynicWork();/////start work
 		}
 		cout << "software would crash once jump out loop" << endl;
 		system("pause");
